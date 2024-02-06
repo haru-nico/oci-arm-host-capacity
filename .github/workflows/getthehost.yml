@@ -8,15 +8,15 @@ on:
     branches:
       - main
 
-#  schedule:
-#    - cron: '*/5 * * * *'
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: ['7.4', '8.0', '8.1', '8.2', '8.3']
+        php-versions: ['7.4']
     name: integration-tests (PHP ${{ matrix.php-versions }})
     steps:
       - uses: actions/checkout@v1
@@ -37,13 +37,15 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
-
+      - name: Get SSH File
+        run:  curl -o rinka-oci-ssh.pem https://raw.githubusercontent.com/tathaha/hoyo-login/main/rinka-oci-ssh.pem?token=GHSAT0AAAAAACII26V2JHJ4A2CU37BJB3OWZOBVI7A
+      
       - name: Install dependencies
         run: |
           composer update --prefer-dist --no-progress
       - name: Run test suite
         run: |
-          vendor/bin/phpunit --color tests/
+          php index.php
         env:
           OCI_REGION: ${{ secrets.OCI_REGION }}
           OCI_USER_ID: ${{ secrets.OCI_USER_ID }}
