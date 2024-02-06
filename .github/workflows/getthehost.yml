@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
       - name: Get SSH File
-        run:  curl -o rinka-oci-ssh.pem SSH_URL
+        run:  curl -o rinka-oci-ssh.pem $SSH_URL
       
       - name: Install dependencies
         run: |
