@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
       - name: Get SSH File
-        run:  curl -o rinka-oci-ssh.pem https://raw.githubusercontent.com/tathaha/hoyo-login/main/rinka-oci-ssh.pem?token=GHSAT0AAAAAACII26V2JHJ4A2CU37BJB3OWZOBVI7A
+        run:  curl -o rinka-oci-ssh.pem SSH_URL
       
       - name: Install dependencies
         run: |
@@ -47,6 +47,7 @@ jobs:
         run: |
           php index.php
         env:
+          SSH_URL: ${{ secrets.SSH_URL }}
           OCI_REGION: ${{ secrets.OCI_REGION }}
           OCI_USER_ID: ${{ secrets.OCI_USER_ID }}
           OCI_TENANCY_ID: ${{ secrets.OCI_TENANCY_ID }}
