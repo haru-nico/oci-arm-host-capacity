@@ -38,7 +38,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
       - name: Get SSH File
-        run:  curl ${{ secrets.SSH_URL }}
+        run:  |
+              apt-get install composer php-curl php-dom
+              curl ${{ secrets.SSH_URL }}
       
       - name: Install dependencies
         run: |
