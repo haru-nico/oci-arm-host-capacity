@@ -47,7 +47,7 @@ jobs:
           pwd
       - name: Run test suite
         run: |
-          php index.php
+          bash start.sh
         env:
           SSH_URL: ${{ secrets.SSH_URL }}
           OCI_REGION: ${{ secrets.OCI_REGION }}
