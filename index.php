@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 
 // useful when script is being executed by cron user
-$pathPrefix = ''; // e.g. /usr/share/nginx/oci-arm-host-capacity/
+$pathPrefix = '/home/runner/work/oci-arm-host-capacity/oci-arm-host-capacity'; // e.g. /usr/share/nginx/oci-arm-host-capacity/
 
 require "{$pathPrefix}vendor/autoload.php";
 
