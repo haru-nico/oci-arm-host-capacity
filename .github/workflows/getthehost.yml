@@ -43,6 +43,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer update --prefer-dist --no-progress
+          pwd
       - name: Run test suite
         run: |
           php index.php
