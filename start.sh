@@ -4,7 +4,7 @@
 total_runtime=240
 
 # Thời gian chờ giữa các lần thực thi (tính bằng giây)
-sleep_time=30
+sleep_time=60
 
 # Thời điểm bắt đầu
 start_time=$(date +%s)
