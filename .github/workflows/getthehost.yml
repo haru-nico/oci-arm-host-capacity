@@ -37,8 +37,8 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
-      - name: Get SSH File
-        run: curl ${{ secrets.SSH_URL }}
+    #  - name: Get SSH File
+    #    run: curl ${{ secrets.SSH_URL }}
       - name: Install ST
         run: composer install
       - name: Install dependencies
